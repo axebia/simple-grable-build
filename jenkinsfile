@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Gradle Build') {
             steps {
-                sh label: '', script: '''buildDocker'''
+                sh label: '', script: 'gradle buildDocker'
             }
         }
         stage('Deploy Helm Chart') {
