@@ -37,6 +37,6 @@ dependencies {
 }
 task buildDocker(type: Docker, dependsOn: build) { 
 applicationName = jar.baseName
-dockerfile file('/home/xeadmin/gs-spring-boot/complete/dockerfile')
+dockerfile file('dockerfile')
 }
 
