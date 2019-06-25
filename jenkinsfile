@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy Helm Chart') {
         
             steps {
-            withCredentials([kubeconfigContent(credentialsId: 'kubeconfigfile', variable: 'KUBECONFIG_CONTENT')]) {
+            withCredentials([kubeconfigContent(credentialsId: 'kubeconfigfile')]) {
     sh label: '', script: 'helm install spring-gradle-helm'
 }
            }
