@@ -15,7 +15,7 @@ pipeline {
         
             steps {
             withCredentials([kubeconfigContent(credentialsId: 'kube', variable: 'KUBECONFIG_CONTENT')]) {
-    sh label: '', script: 'kubectl cluster-info'
+    sh label: '', script: 'helm install spring-gradle-helm'
 }
            }
         }
