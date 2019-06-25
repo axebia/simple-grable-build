@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-spring-gradle-deployment
+  labels:
+    app: spring-label
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-label
+  template:
+    metadata:
+      labels:
+        app: spring-label
+    spec:
+      containers:
+      - name: docker-spring-gradle
+        image: ashurana31/complete:gradle-spring
+        ports:
+        - containerPort: 8080
+    secret:
+      secretName: test-secret
