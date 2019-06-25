@@ -18,12 +18,6 @@ apply plugin: 'docker'
 bootJar {
     baseName = 'gradle'
 }
-task copyJarToBin {
-    copy {
-        from 'build/libs/gradle.jar'
-        into "/home/xeadmin/gs-spring-boot/complete/build/docker"
-    }
-}
 
 repositories {
     mavenCentral()
