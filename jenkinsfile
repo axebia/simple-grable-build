@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy Helm Chart') {
         
             steps {
-            withCredentials([kubeconfigContent(credentialsId: 'kubeconfigfile', variable: 'KUBECONFIG_CONTENT')]) {
+            withCredentials([kubeconfigContent(credentialsId: 'kube-credentials', variable: 'KUBECONFIG_CONTENT')]) {
     sh label: '', script: 'kubectl cluster-info'
 }
            }
