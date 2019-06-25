@@ -14,8 +14,10 @@ pipeline {
         stage('Deploy Helm Chart') {
         
             steps {
-            kubernetesDeploy configs: 'deployment.yaml,service.yaml,ingress.yaml', dockerCredentials: [[credentialsId: 'dockerhub']], kubeConfig: [path: ''], kubeconfigId: 'kubeconfigfile', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-            }
+            withCredentials([kubeconfigContent(credentialsId: 'kubeconfigfile', variable: 'KUBECONFIG_CONTENT')]) {
+    sh label: '', script: 'helm install spring-gradle-helm'
+}
+           }
         }
         
     }
