@@ -6,19 +6,12 @@ pipeline {
                 git credentialsId: 'xebia_github', url: 'https://github.com/axebia/simple-grable-build.git'
             }
         }
-        stage('Gradle Build') {
-            steps {
-                sh label: '', script: 'gradle buildDocker'
-            }
-        }
-        stage('Deploy Helm Chart') {
-        
+        stage('Gradle Build and Deploy') {
             steps {
             withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-            sh label: '', script: 'helm install spring-gradle-helm'
-}
-           }
-        }
-        
+                sh label: '', script: 'gradle startScript'
+            }
+        }  
     }
+}
 }
