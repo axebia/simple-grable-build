@@ -45,7 +45,4 @@ task buildDocker(type: Docker, dependsOn: build) {
 applicationName = jar.baseName
 dockerfile file('/home/xeadmin/gs-spring-boot/complete/dockerfile')
 }
-task distDocker {
-    docker run -p 8085:8080 complete
-}
 
