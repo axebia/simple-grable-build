@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spring-docker-gradle
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: spring-docker-gradle.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: docker-spring-gradle-service
+          servicePort: 8080
+---
+
