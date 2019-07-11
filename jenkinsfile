@@ -3,14 +3,12 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                git credentialsId: 'xebia_github', url: 'https://github.com/axebia/simple-grable-build.git'
+                git credentialsId: 'xebia_github', url: 'https://github.com/axebia/pr-ghprb.git'
             }
         }
-        stage('Gradle Build and Deploy') {
+        stage('Github pull request builder') {
             steps {
-            withCredentials([file(credentialsId: 'kube-config', variable: 'KUBECONFIG')]) {
-                sh label: '', script: 'gradle startScript'
-            }
+            properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/axebia/pr-ghprb.git/'], pipelineTriggers([<object of type org.jenkinsci.plugins.ghprb.GhprbTrigger>])])
         }  
     }
 }
