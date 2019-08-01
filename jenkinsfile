@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Gradle Build and Deploy') {
             steps {
-            withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+            withCredentials([file(credentialsId: 'kube-config', variable: 'KUBECONFIG')]) {
                 sh label: '', script: 'gradle startScript'
             }
         }  
